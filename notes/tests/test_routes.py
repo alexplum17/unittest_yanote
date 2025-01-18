@@ -56,8 +56,8 @@ class RoutesTests(TestCase):
         for url in [reverse('notes:list'),
                     reverse('notes:add'),
                     reverse('notes:success'),
-                    reverse('notes:detail', kwargs={'slug': self.note.slug}), 
-                    reverse('notes:edit', kwargs={'slug': self.note.slug}), 
+                    reverse('notes:detail', kwargs={'slug': self.note.slug}),
+                    reverse('notes:edit', kwargs={'slug': self.note.slug}),
                     reverse('notes:delete', kwargs={'slug': self.note.slug})]:
             response = self.client.get(url)
             self.assertRedirects(response, f'/auth/login/?next={url}')
