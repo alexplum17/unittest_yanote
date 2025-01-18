@@ -43,8 +43,8 @@ class RoutesTests(TestCase):
             self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_note_detail_edit_and_delete_not_accessible_to_another_user(self):
-        another_user = User.objects.create_user(username='anotheruser',
-                                                password='anotherpassword')
+        User.objects.create_user(username='anotheruser',
+                                 password='anotherpassword')
         self.client.login(username='anotheruser', password='anotherpassword')
         for url in [reverse('notes:detail', kwargs={'slug': self.note.slug}),
                     reverse('notes:edit', kwargs={'slug': self.note.slug}),
